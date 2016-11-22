@@ -8,6 +8,8 @@
 * See the files COPYING.lgpl-v3 and COPYING.gpl-v3 for details.           *
 \*************************************************************************/
 
+#include <string.h>
+
 /* Listing 3-2 */
 
 /* error_functions.h
