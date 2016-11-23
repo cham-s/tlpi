@@ -15,11 +15,11 @@ main(int ac, char **av)
 	int		flags;
 	int		perm_flags = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
 	int		opt;
-	int		fname_position = 0;
+	int		fname_position = 1;
 	ssize_t	ret_read;
 	ssize_t	ret_write;
 
-	flags = O_WRONLY | O_CREAT;
+	flags = O_WRONLY | O_CREAT | O_TRUNC;
 	if (ac < 2 || strcmp(av[1], "--help") == 0)
 		usageErr("%s [-a] newfile\n", av[0]);
 
@@ -36,7 +36,7 @@ main(int ac, char **av)
 		}
 	}
 	
-	fd = open(av[1], flags, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+	fd = open(av[fname_position], flags, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 	if (fd == -1)
 		errExit("open");
 	while((ret_read = read(0, buf, BUF_SIZE)) > 0)

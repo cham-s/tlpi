@@ -9,11 +9,9 @@ OBJS 		= $(OBJDIR)/ft_tee.o
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB)
+$(NAME): $(OBJS)
 	$(CC) $(INCLUDES) $(OBJS) $(LIB) -o $(NAME)
 
-$(LIB):
-	make -C libft/
 
 $(OBJDIR)/%.o : %.c
 	@mkdir -p $(OBJDIR)
@@ -23,7 +21,6 @@ clean:
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	make fclean -C libft/
 	rm -f $(NAME)
 
 re: fclean all
